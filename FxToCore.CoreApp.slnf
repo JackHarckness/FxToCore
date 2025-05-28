@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "FxToCore.sln",
+    "projects": [
+      "src\\FxToCore.CoreApp.Tests\\FxToCore.CoreApp.Tests.csproj",
+      "src\\FxToCore.CoreApp\\FxToCore.CoreApp.csproj"
+    ]
+  }
+}

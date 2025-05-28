@@ -1,0 +1,10 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <F2CRoot Condition="$(F2CRoot) == ''">$([MsBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), FxToCore.sln))/</F2CRoot>
+    <F2CBuildScriptsPath>$(F2CRoot)build/</F2CBuildScriptsPath>
+  </PropertyGroup>
+
+  <Import Project="$(F2CBuildScriptsPath)Common.props"/>
+  
+</Project>

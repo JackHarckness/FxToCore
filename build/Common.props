@@ -1,0 +1,20 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  
+  <PropertyGroup Label="F2CCalculatePaths">
+    <F2CSourceRoot>$(F2CRoot)src/</F2CSourceRoot>
+    <F2COutputPath>$(F2CRoot)bin/$(Configuration)/</F2COutputPath>
+    <F2CInstallPath>$(F2CRoot)out/$(Configuration)/</F2CInstallPath>
+    <F2CObjectPath>$(F2CRoot)obj/$(MSBuildProjectName)/</F2CObjectPath>
+    <F2CBuildScriptsPath Condition="$(F2CBuildScriptsPath) == ''">$(MSBuildThisFileDirectory)</F2CBuildScriptsPath>
+  </PropertyGroup>
+  
+  <PropertyGroup Label="F2CCalculateMSBuildProjectType">
+    <F2CIsCSharp Condition="$(MSBuildProjectExtension) == '.csproj'">true</F2CIsCSharp>
+    <F2CIsCPlusPlus Condition="$(MSBuildProjectExtension) == '.vcxproj'">true</F2CIsCPlusPlus>
+  </PropertyGroup>
+  
+  <Import Project="$(F2CBuildScriptsPath)CSharp.props" Condition="$(F2CIsCSharp) == 'true'" />
+  <Import Project="$(F2CBuildScriptsPath)CPlusPlus.props" Condition="$(F2CIsCPlusPlus) == 'true'" />
+
+  <Import Project="$(F2CBuildScriptsPath)Version.props"/>
+</Project>

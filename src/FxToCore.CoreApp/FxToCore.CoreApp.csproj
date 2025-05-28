@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>f2c-http</AssemblyName>
+    <RootNamespace>FxToCore</RootNamespace>
+    <StartupObject>$(RootNamespace).FxToCoreApp</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Label="DefineFeatures">
+    <!--Logging and text output:-->
+    <UseAnsiEscapeSequences Condition="$(UseAnsiEscapeSequences) == ''">true</UseAnsiEscapeSequences>
+    <UseZLogger Condition="$(UseZLogger) == ''">true</UseZLogger>
+
+    <!--Http:-->
+    <!--Note: No other server is implemented except for AspNetCore's albeit can be-->
+    <UseAspNetCore>true</UseAspNetCore>
+  </PropertyGroup>
+
+  <PropertyGroup Label="DefineFeatureCompileFlags">
+    <DefineConstants Condition="$(UseAspNetCore) == 'true'">$(DefineConstants);FEATURE_ASPNETCORE</DefineConstants>
+    <DefineConstants Condition="$(UseZLogger) == 'true'">$(DefineConstants);FEATURE_ZLOGGER</DefineConstants>
+    <DefineConstants Condition="$(UseAnsiEscapeSequences) == 'true'">$(DefineConstants);FEATURE_ANSI_ESCAPE_SEQ</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Label="AspNetCoreSetup" Condition="$(UseAspNetCore) == 'true'">
+    <!--Note: For ASP.NET to back off with an IIS shared library-->
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup Label="IncFxRef">
+    <FrameworkReference Condition="$(UseAspNetCore) == 'true'" Include="Microsoft.AspNetCore.App" IsImplicitlyDefined="true" />
+  </ItemGroup>
+
+  <ItemGroup Label="IncPkgRef">
+    <PackageReference Condition="$(UseZLogger) == 'true'" Include="ZLogger" Version="2.5.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="FxToCore.CoreApp.Tests" />
+  </ItemGroup>
+
+</Project>

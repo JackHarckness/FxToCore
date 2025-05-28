@@ -1,0 +1,17 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <ItemGroup>
+    <ResourceCompile Include="$(F2CBuildScriptsPath)Version.rc">
+      <Visible>False</Visible>
+    </ResourceCompile>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <OutDir>$(F2COutputPath)</OutDir>
+    <IntDir>$(F2CObjectPath)</IntDir>
+    <WarningLevel>Level3</WarningLevel>
+    <ExternalWarningLevel>Level1</ExternalWarningLevel>
+  </PropertyGroup>
+</Project>

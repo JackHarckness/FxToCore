@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  
+  <PropertyGroup>
+    <SourceDir>$(F2CSourceRoot)</SourceDir>
+    <OutputPath>$(F2COutputPath)</OutputPath>
+    <PublishDir>$(F2CInstallPath)</PublishDir>
+    <BaseIntermediateOutputPath>$(F2CObjectPath)</BaseIntermediateOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+  
+</Project>

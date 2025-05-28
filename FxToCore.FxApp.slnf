@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "FxToCore.sln",
+    "projects": [
+      "src\\FxToCore.FxApp.CppLib\\FxToCore.FxApp.CppLib.vcxproj",
+      "src\\FxToCore.FxApp\\FxToCore.FxApp.csproj"
+    ]
+  }
+}
