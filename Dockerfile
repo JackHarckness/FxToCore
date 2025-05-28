@@ -10,8 +10,9 @@ COPY . ./
 RUN mkdir -p out/Release
 RUN gcc -Wall -shared -fPIC -o out/Release/libcpp.so src/FxToCore.CoreApp.CppLib/ReverseString.c
 
-FROM mcr.microsoft.com/dotnet/aspnet:9.0@sha256:b4bea3a52a0a77317fa93c5bbdb076623f81e3e2f201078d89914da71318b5d8
+FROM mcr.microsoft.com/dotnet/aspnet:9.0-bookworm-slim
 WORKDIR /fx2c
 COPY --from=build-dotnet /fx2c/out/Release .
 COPY --from=build-gcc /fx2c/out/Release/libcpp.so /usr/lib/libcpp.so
+EXPOSE 9999
 ENTRYPOINT ["./f2c-http"]
