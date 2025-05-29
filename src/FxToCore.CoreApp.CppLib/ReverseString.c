@@ -1,7 +1,5 @@
 #include <string.h>
 
-int reverse_str(char*);
-
 int reverse_str(char* s)
 {
     // Initialize l and r pointers
