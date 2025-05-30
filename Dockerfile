@@ -4,7 +4,7 @@ COPY . ./
 RUN dotnet restore src/FxToCore.CoreApp/FxToCore.CoreApp.csproj
 RUN dotnet publish -c:Release src/FxToCore.CoreApp/FxToCore.CoreApp.csproj
 
-FROM gcc:14 AS build-gcc
+FROM docker.io/library/gcc:14 AS build-gcc
 WORKDIR /fx2c
 COPY . ./
 RUN mkdir -p out/Release
